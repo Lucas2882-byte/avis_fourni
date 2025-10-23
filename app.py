@@ -111,8 +111,13 @@ def init_databases():
 # Initialiser les bases
 init_databases()
 
+# Construire le chemin absolu vers la base fiches
+script_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(script_dir)
+fiches_db_path = os.path.join(parent_dir, "gestion-fiches-main", "fiches.db")
+
 # Connexion à la base des fiches (depuis l'application principale)
-conn_fiches = sqlite3.connect("../gestion-fiches-main/fiches.db", check_same_thread=False)
+conn_fiches = sqlite3.connect(fiches_db_path, check_same_thread=False)
 cursor_fiches = conn_fiches.cursor()
 
 # Connexion à la base des avis fournisseurs
